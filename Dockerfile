@@ -20,3 +20,7 @@ COPY --from=build /app/target/*.jar app.jar
 # Render asigna el puerto en la env var $PORT; Spring lo tomará por -Dserver.port
 ENV JAVA_OPTS="-Xms256m -Xmx512m"
 CMD ["sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -jar app.jar"]
+
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/app.jar"]
+
